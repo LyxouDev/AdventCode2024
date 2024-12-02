@@ -9,8 +9,8 @@ Suivez-moi dans mon ouverture de ce calendrier de l'Avent Virtuel
 ## Solution Journalière
 Ceci représente mes réponses aux défis, elles ne sont par définition pas les solutions ultimes à ceux-ci.
 
-- Jour 1  :  <a href="/jour_01/">Lien</a>.
-- Jour 2 :  A venir.
+- <a href="/jour_01/">>> Jour 1</a>.
+- <a href="/jour_02/">>> Jour 2</a>.
 - Jour 3  :  A venir.
 - Jour 4  :  A venir.
 - Jour 5  :  A venir.
