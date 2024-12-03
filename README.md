@@ -11,7 +11,7 @@ Ceci représente mes réponses aux défis, elles ne sont par définition pas les
 
 - <a href="/jour_01/">>> Jour 1</a>.
 - <a href="/jour_02/">>> Jour 2</a>.
-- Jour 3  :  A venir.
+- <a href="/jour_03/">>> Jour 3</a>.
 - Jour 4  :  A venir.
 - Jour 5  :  A venir.
 - Jour 6  :  A venir.

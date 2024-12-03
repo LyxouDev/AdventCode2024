@@ -1,0 +1,36 @@
+--- Jour 3 : Réfléchissez-y ---
+"Nos ordinateurs ont des problèmes, donc je ne sais pas si nous avons des historiens en chef en stock ! Vous pouvez cependant vérifier l'entrepôt", déclare le commerçant légèrement agité du magasin de location de luges du Pôle Nord. Les historiens partent jeter un œil.
+
+Le commerçant se tourne vers vous. « Y a-t-il une chance que vous puissiez comprendre pourquoi nos ordinateurs rencontrent à nouveau des problèmes ? »
+
+L'ordinateur semble essayer d'exécuter un programme, mais sa mémoire (votre saisie de puzzle) est corrompue. Toutes les instructions ont été mélangées !
+
+Il semble que le but du programme soit simplement de multiplier certains nombres. Il le fait avec des instructions telles que mul(X,Y), où X et Y sont chacun des nombres de 1 à 3 chiffres. Par exemple, mul(44,46) multiplie 44 par 46 pour obtenir un résultat de 2024. De même, mul(123,4) multiplierait 123 par 4.
+
+Cependant, comme la mémoire du programme a été corrompue, il existe également de nombreux caractères invalides qui doivent être ignorés, même s'ils semblent faire partie d'une instruction mul. Des séquences comme mul(4*, mul(6,9!, ?(12,34) ou mul ( 2 , 4 ) ne font rien.
+
+Par exemple, considérons la section suivante de mémoire corrompue :
+xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]puis(mul(11,8)mul(8,5))
+
+Seules les quatre sections en surbrillance sont de véritables instructions mul. L'addition du résultat de chaque instruction produit 161 (2*4 + 5*5 + 11*8 + 8*5).
+
+Analysez la mémoire corrompue à la recherche d'instructions mul non corrompues. Qu'obtient-on si l'on additionne tous les résultats des multiplications ?
+
+--- Deuxième partie ---
+
+Lorsque vous parcourez la mémoire corrompue, vous remarquez que certaines instructions conditionnelles sont également toujours intactes. Si vous gérez certaines des instructions conditionnelles non corrompues du programme, vous pourrez peut-être obtenir un résultat encore plus précis.
+
+Vous devrez gérer deux nouvelles instructions :
+
+L'instruction do() active les futures instructions mul.
+L'instruction don't() désactive les futures instructions mul.
+Seule l'instruction do() ou don't() la plus récente s'applique. Au début du programme, les instructions mul sont activées.
+
+Par exemple:
+xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))
+
+Cette mémoire corrompue est similaire à l'exemple précédent, mais cette fois les instructions mul(5,5) et mul(11,8) sont désactivées car il y a une instruction don't() avant elles. Les autres instructions mul fonctionnent normalement, y compris celle de la fin qui est réactivée par une instruction do().
+
+Cette fois, la somme des résultats est de 48 (2*4 + 8*5).
+
+Gérer les nouvelles instructions ; qu'obtenez-vous si vous additionnez tous les résultats des multiplications activées uniquement ?
