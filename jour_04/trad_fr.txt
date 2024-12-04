@@ -1,0 +1,64 @@
+--- Jour 4 : Recherche de Cérès ---
+
+« On dirait que le chef n'est pas là. Ensuite ! L'un des Historiens sort un appareil et appuie sur le seul bouton qui se trouve dessus. Après un bref éclair, vous reconnaissez l'intérieur de la station de surveillance Cérès !
+
+Alors que la recherche du chef se poursuit, un petit elfe qui vit dans la gare tire sur votre chemise ; elle aimerait savoir si vous pouviez l'aider avec sa recherche de mots (votre réponse au puzzle). Elle ne doit trouver qu'un seul mot : XMAS.
+
+Cette recherche de mots permet aux mots d'être horizontaux, verticaux, diagonaux, écrits à l'envers ou même de chevaucher d'autres mots. C'est un peu inhabituel, cependant, car vous n'avez pas seulement besoin de trouver une instance de XMAS - vous devez les trouver toutes. Voici quelques façons dont XMAS peut apparaître, où les caractères non pertinents ont été remplacés par . :
+..X...
+.SAMX.
+.A..A.
+XMAS.S
+.X....
+
+La recherche de mots elle-même sera pleine de lettres. Par exemple:
+MMMSXXMASM
+MSAMXMSMSA
+AMXSXMAAMM
+MSAMASMSMX
+XMASAMXAMM
+XXAMMXXAMA
+SMSMSASXSS
+SAXAMASAAA
+MAMMMXMMMM
+MXMXAXMASX
+
+Dans cette recherche de mots, XMAS apparaît 18 fois au total ; voici à nouveau la même recherche de mots, mais où les lettres non impliquées dans aucun XMAS ont été remplacées par .:
+....XXMAS.
+.SAMXMS...
+...S..A...
+..A.A.MS.X
+XMASAMX.MM
+X.....XA.A
+S.S.S.S.SS
+.A.A.A.A.A
+..M.M.M.MM
+.X.X.XMASX
+
+Jetez un œil à la recherche de mots du petit elfe. Combien de fois XMAS apparaît-il ?
+
+--- Deuxième partie ---
+L'Elfe vous regarde d'un air interrogateur. Avez-vous mal compris la mission ?
+
+En recherchant les instructions, vous retournez la recherche de mots pour découvrir qu'il ne s'agit pas réellement d'un puzzle de Noël ; c'est un puzzle X-MAS dans lequel vous êtes censé trouver deux MAS en forme de X. Une façon d'y parvenir est la suivante :
+M.S
+.A.
+M.S
+
+Les caractères non pertinents ont de nouveau été remplacés par . dans le diagramme ci-dessus. Dans le X, chaque MAS peut être écrit en avant ou en arrière.
+
+Voici le même exemple que précédemment, mais cette fois, tous les X-MAS ont été conservés :
+.M.S......
+..A..MSMS.
+.M.S.MAA..
+..A.ASMSM.
+.M.S.M....
+..........
+S.S.S.S.S.
+.A.A.A.A..
+M.M.M.M.M.
+..........
+
+Dans cet exemple, un X-MAS apparaît 9 fois.
+
+Retournez la recherche de mots des instructions vers le côté recherche de mots et réessayez. Combien de fois un X-MAS apparaît-il ?
