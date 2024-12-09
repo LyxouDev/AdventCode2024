@@ -1,7 +1,7 @@
 
-############################
-# Première Etoile - Jour 6 #
-############################
+#####################################
+# Première/Deuxième Etoile - Jour 7 #
+#####################################
         
 #Récupération des élements de la fichier d'entrées
 with open('input.txt') as input_file:
