@@ -1,0 +1,113 @@
+--- Jour 10 : Le sabot ---
+Vous arrivez tous à une installation de production de lave sur une île flottante dans le ciel. Alors que les autres commencent à fouiller l'immense complexe industriel, vous sentez un petit nez cogner dans votre jambe et baissez les yeux pour découvrir un renne portant un casque de sécurité.
+
+Le renne tient un livre intitulé « Guide de randonnée de l'île de Lava ». Cependant, lorsque vous ouvrez le livre, vous découvrez que la majeure partie semble avoir été brûlée par la lave ! Alors que vous êtes sur le point de demander comment vous pouvez aider, le renne vous apporte une carte topographique vierge des environs (votre réponse au puzzle) et vous regarde avec enthousiasme.
+
+Peut-être pouvez-vous nous aider à combler les sentiers de randonnée manquants ?
+
+La carte topographique indique la hauteur à chaque position en utilisant une échelle de 0 (la plus basse) à 9 (la plus haute). Par exemple:
+0123
+1234
+8765
+9876
+
+Sur la base de fragments non brûlés du livre, vous déterminez qu'un bon sentier de randonnée est aussi long que possible et présente une pente ascendante uniforme et progressive. À toutes fins pratiques, cela signifie qu'un sentier de randonnée est tout chemin qui commence à la hauteur 0, se termine à la hauteur 9 et augmente toujours d'une hauteur d'exactement 1 à chaque étape. Les sentiers de randonnée ne comportent jamais de marches diagonales : uniquement vers le haut, le bas, la gauche ou la droite (du point de vue de la carte).
+
+Vous levez les yeux de la carte et remarquez que le renne a commencé à construire une petite pile de crayons, marqueurs, règles, boussoles, autocollants et autres équipements dont vous pourriez avoir besoin pour mettre à jour la carte avec les sentiers de randonnée.
+
+Un début de sentier est toute position qui démarre un ou plusieurs sentiers de randonnée - ici, ces positions auront toujours une hauteur de 0. En assemblant plusieurs fragments de pages, vous établissez que le score d'un début de sentier est le nombre de positions de 9 hauteurs accessibles à partir de ce début de sentier via une randonnée. piste. Dans l'exemple ci-dessus, le point de départ du sentier dans le coin supérieur gauche a un score de 1 car il peut atteindre un seul 9 (celui en bas à gauche).
+
+Ce début de sentier a un score de 2 :
+...0...
+...1...
+...2...
+6543456
+7.....7
+8.....8
+9.....9
+
+(Les positions marquées . sont des tuiles infranchissables pour simplifier ces exemples ; elles n'apparaissent pas sur votre carte topographique réelle.)
+
+Ce début de sentier a un score de 4 car tous les 9 sont accessibles via un sentier de randonnée à l'exception de celui immédiatement à gauche du début du sentier :
+..90..9
+...1.98
+...2..7
+6543456
+765.987
+876....
+987....
+
+Cette carte topographique contient deux points de départ de sentiers ; le début du sentier en haut a un score de 1, tandis que le début du sentier en bas a un score de 2 :
+10..9..
+2...8..
+3...7..
+4567654
+...8..3
+...9..2
+.....01
+
+Voici un exemple plus grand :
+89010123
+78121874
+87430965
+96549874
+45678903
+32019012
+01329801
+10456732
+
+Cet exemple plus grand comporte 9 points de départ. En considérant les points de départ dans l'ordre de lecture, ils ont des scores de 5, 6, 5, 3, 1, 3, 5, 3 et 5. En additionnant ces scores, la somme des scores de tous les points de départ est de 36.
+
+Le renne transporte joyeusement un rapporteur et l'ajoute à la pile. Quelle est la somme des scores de tous les points de départ de sentiers sur votre carte topographique ?
+
+--- Deuxième partie ---
+Le renne passe quelques minutes à examiner la carte de vos sentiers de randonnée avant de se rendre compte de quelque chose, de disparaître quelques minutes et enfin de revenir avec un énième morceau de papier légèrement carbonisé.
+
+Le document décrit une deuxième façon de mesurer le début d’un sentier, appelée sa notation. L'évaluation d'un début de sentier est le nombre de sentiers de randonnée distincts qui commencent à ce début de sentier. Par exemple:
+.....0.
+..4321.
+..5..2.
+..6543.
+..7..4.
+..8765.
+..9....
+
+La carte ci-dessus comporte un seul point de départ ; sa note est de 3 car il y a exactement trois sentiers de randonnée distincts qui commencent à cet endroit :
+.....0.   .....0.   .....0.
+..4321.   .....1.   .....1.
+..5....   .....2.   .....2.
+..6....   ..6543.   .....3.
+..7....   ..7....   .....4.
+..8....   ..8....   ..8765.
+..9....   ..9....   ..9....
+
+Voici une carte contenant un seul point de départ de sentier classé 13 :
+..90..9
+...1.98
+...2..7
+6543456
+765.987
+876....
+987....
+
+Cette carte contient un seul point de départ de sentier classé 227 (car il existe 121 sentiers de randonnée distincts qui mènent au 9 sur le bord droit et 106 qui mènent au 9 sur le bord inférieur) :
+012345
+123456
+234567
+345678
+4.6789
+56789.
+
+Voici l'exemple plus grand d'avant :
+89010123
+78121874
+87430965
+96549874
+45678903
+32019012
+01329801
+10456732
+
+En considérant ses points de départ dans l'ordre de lecture, ils ont des notes de 20, 24, 10, 4, 1, 4, 5, 8 et 5. La somme de toutes les notes de départ de sentier dans cet exemple de carte topographique plus grande est de 81.
+
+Vous ne savez pas comment, mais le renne semble avoir fabriqué de minuscules drapeaux avec des cure-dents et des morceaux de papier et les utilise pour marquer les points de départ des sentiers sur votre carte topographique. Quelle est la somme des notes de tous les points de départ ?
