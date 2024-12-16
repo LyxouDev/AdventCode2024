@@ -1,0 +1,127 @@
+--- Jour 16 : Labyrinthe des rennes ---
+C'est à nouveau l'heure des Jeux olympiques du renne ! Cette année, le grand événement est le labyrinthe de rennes, où les rennes s'affrontent pour obtenir le score le plus bas.
+
+Vous et les historiens arrivez à la recherche du chef alors que l'événement est sur le point de commencer. Ça ne ferait pas de mal de regarder un peu, non ?
+
+Les rennes commencent sur la tuile de départ (marquée S) face à l'est et doivent atteindre la tuile de fin (marquée E). Ils peuvent avancer d'une tuile à la fois (augmentant leur score de 1 point), mais jamais dans un mur (#). Ils peuvent également tourner dans le sens des aiguilles d'une montre ou dans le sens inverse de 90 degrés à la fois (augmentant leur score de 1 000 points).
+
+Pour déterminer le meilleur endroit pour vous asseoir, commencez par récupérer une carte (votre réponse au puzzle) dans un kiosque à proximité. Par exemple:
+###############
+#.......#....E#
+#.#.###.#.###.#
+#.....#.#...#.#
+#.###.#####.#.#
+#.#.#.......#.#
+#.#.#####.###.#
+#...........#.#
+###.#.#####.#.#
+#...#.....#.#.#
+#.#.#.###.#.#.#
+#.....#...#.#.#
+#.###.#.#.#.#.#
+#S..#.....#...#
+###############
+
+Il existe de nombreux chemins à travers ce labyrinthe, mais emprunter l'un des meilleurs chemins entraînerait un score de seulement 7036. Ceci peut être réalisé en faisant un total de 36 pas en avant et en tournant de 90 degrés 7 fois au total :
+###############
+#.......#....E#
+#.#.###.#.###^#
+#.....#.#...#^#
+#.###.#####.#^#
+#.#.#.......#^#
+#.#.#####.###^#
+#..>>>>>>>>v#^#
+###^#.#####v#^#
+#>>^#.....#v#^#
+#^#.#.###.#v#^#
+#^....#...#v#^#
+#^###.#.#.#v#^#
+#S..#.....#>>^#
+###############
+
+Voici un deuxième exemple :
+#################
+#...#...#...#..E#
+#.#.#.#.#.#.#.#.#
+#.#.#.#...#...#.#
+#.#.#.#.###.#.#.#
+#...#.#.#.....#.#
+#.#.#.#.#.#####.#
+#.#...#.#.#.....#
+#.#.#####.#.###.#
+#.#.#.......#...#
+#.#.###.#####.###
+#.#.#...#.....#.#
+#.#.#.#####.###.#
+#.#.#.........#.#
+#.#.#.#########.#
+#S#.............#
+#################
+
+Dans ce labyrinthe, les meilleurs chemins coûtent 11 048 points ; suivre un tel chemin ressemblerait à ceci :
+#################
+#...#...#...#..E#
+#.#.#.#.#.#.#.#^#
+#.#.#.#...#...#^#
+#.#.#.#.###.#.#^#
+#>>v#.#.#.....#^#
+#^#v#.#.#.#####^#
+#^#v..#.#.#>>>>^#
+#^#v#####.#^###.#
+#^#v#..>>>>^#...#
+#^#v###^#####.###
+#^#v#>>^#.....#.#
+#^#v#^#####.###.#
+#^#v#^........#.#
+#^#v#^#########.#
+#S#>>^..........#
+#################
+
+Notez que le chemin indiqué ci-dessus comprend un virage à 90 degrés comme tout premier mouvement, faisant pivoter le renne de l'orientation vers l'est vers l'orientation vers le nord.
+
+Analysez soigneusement votre carte. Quel est le score le plus bas qu’un renne puisse obtenir ?
+
+--- Deuxième partie ---
+Maintenant que vous savez à quoi ressemblent les meilleurs chemins, vous pouvez déterminer le meilleur endroit pour vous asseoir.
+
+Chaque carreau non mural (S, . ou E) est équipé d'emplacements pour s'asseoir le long des bords du carreau. Bien que déterminer lequel de ces carreaux serait le meilleur endroit pour s'asseoir dépend de tout un tas de facteurs (le confort des sièges, la distance entre les salles de bains, la présence ou non d'un pilier bloquant votre vue, etc.), le facteur le plus important est de savoir si la tuile se trouve sur l'un des meilleurs chemins à travers le labyrinthe. Si vous vous asseyez ailleurs, vous manquerez toute l'action !
+
+Vous devrez donc déterminer quelles tuiles font partie du meilleur chemin à travers le labyrinthe, y compris les tuiles S et E.
+
+Dans le premier exemple, il y a 45 tuiles (marquées O) qui font partie d'au moins un des différents meilleurs chemins à travers le labyrinthe :
+###############
+#.......#....O#
+#.#.###.#.###O#
+#.....#.#...#O#
+#.###.#####.#O#
+#.#.#.......#O#
+#.#.#####.###O#
+#..OOOOOOOOO#O#
+###O#O#####O#O#
+#OOO#O....#O#O#
+#O#O#O###.#O#O#
+#OOOOO#...#O#O#
+#O###.#.#.#O#O#
+#O..#.....#OOO#
+###############
+
+Dans le deuxième exemple, il y a 64 tuiles qui font partie d’au moins un des meilleurs chemins :
+#################
+#...#...#...#..O#
+#.#.#.#.#.#.#.#O#
+#.#.#.#...#...#O#
+#.#.#.#.###.#.#O#
+#OOO#.#.#.....#O#
+#O#O#.#.#.#####O#
+#O#O..#.#.#OOOOO#
+#O#O#####.#O###O#
+#O#O#..OOOOO#OOO#
+#O#O###O#####O###
+#O#O#OOO#..OOO#.#
+#O#O#O#####O###.#
+#O#O#OOOOOOO..#.#
+#O#O#O#########.#
+#O#OOO..........#
+#################
+
+Analysez davantage votre carte. Combien de tuiles font partie d’au moins l’un des meilleurs chemins à travers le labyrinthe ?
