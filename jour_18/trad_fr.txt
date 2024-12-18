@@ -1,0 +1,86 @@
+--- Jour 18 : RAM Run ---
+Vous et les Historiens avez l’air beaucoup plus pixelisés que vous ne vous en souvenez. Vous êtes à l'intérieur d'un ordinateur au pôle Nord !
+
+Alors que vous vous apprêtez à explorer votre environnement, un programme arrive à vous. "Cette région de la mémoire n'est pas sûre ! L'utilisateur a mal compris ce qu'est un automate pushdown et son algorithme pousse des octets entiers sur nous ! Courez !"
+
+L'algorithme est rapide : il fera tomber un octet dans votre espace mémoire toutes les nanosecondes ! Heureusement, vous êtes plus rapide et en analysant rapidement l'algorithme, vous créez une liste des octets qui tomberont (votre entrée de puzzle) dans l'ordre dans lequel ils atterriront dans votre espace mémoire.
+
+Votre espace mémoire est une grille bidimensionnelle dont les coordonnées vont de 0 à 70 horizontalement et verticalement. Cependant, à titre d'exemple, supposons que vous vous trouviez sur une grille plus petite avec des coordonnées allant de 0 à 6 et la liste suivante de positions d'octets entrants :
+5,4
+4,2
+4,5
+3,0
+2,1
+6,3
+2,4
+1,5
+0,6
+3,3
+2,6
+5,1
+1,2
+5,5
+2,5
+6,5
+1,4
+0,4
+6,4
+1,1
+6,1
+1,0
+0,5
+1,6
+2,0
+
+Chaque position d'octet est donnée sous forme de coordonnées X,Y, où X est la distance depuis le bord gauche de votre espace mémoire et Y est la distance depuis le bord supérieur de votre espace mémoire.
+
+Vous et les Historiens êtes actuellement dans le coin supérieur gauche de l'espace mémoire (à 0,0) et devez atteindre la sortie dans le coin inférieur droit (à 70,70 dans votre espace mémoire, mais à 6,6 dans cet exemple ). Vous devrez simuler la chute des octets pour planifier où l'exécution sera sûre ; pour l'instant, simulez uniquement les premiers octets tombant dans votre espace mémoire.
+
+Au fur et à mesure que les octets tombent dans votre espace mémoire, ces coordonnées sont corrompues. Les coordonnées de mémoire corrompues ne peuvent pas être saisies par vous ou par les historiens, vous devrez donc planifier votre itinéraire avec soin. Vous ne pouvez pas non plus quitter les limites de l'espace mémoire ; votre seul espoir est d'atteindre la sortie.
+
+Dans l'exemple ci-dessus, si vous deviez dessiner l'espace mémoire après la chute des 12 premiers octets (en utilisant . pour sûr et # pour corrompu), cela ressemblerait à ceci :
+...#...
+..#..#.
+....#..
+...#..#
+..#..#.
+.#..#..
+#.#....
+
+Vous pouvez faire des pas vers le haut, le bas, la gauche ou la droite. Une fois que seulement 12 octets ont corrompu des emplacements dans votre espace mémoire, le chemin le plus court depuis le coin supérieur gauche jusqu'à la sortie prendrait 22 étapes. Voici (marqué d'un O) l'un de ces chemins :
+OO.#OOO
+.O#OO#O
+.OOO#OO
+...#OO#
+..#OO#.
+.#.O#..
+#.#OOOO
+
+Simulez le premier kilo-octet (1024 octets) tombant sur votre espace mémoire. Ensuite, quel est le nombre minimum de marches nécessaires pour atteindre la sortie ?
+
+--- Deuxième partie ---
+Les historiens ne sont pas aussi habitués que vous à se déplacer dans cet univers pixelisé. Vous avez peur qu'ils ne soient pas assez rapides pour atteindre la sortie avant que le chemin ne soit complètement bloqué.
+
+Pour déterminer à quelle vitesse tout le monde doit aller, vous devez déterminer le premier octet qui coupera le chemin vers la sortie.
+
+Dans l'exemple ci-dessus, après la chute de l'octet à 1,1, il existe toujours un chemin vers la sortie :
+O..#OOO
+O##OO#O
+O#OO#OO
+OOO#OO#
+###OO##
+.##O###
+#.#OOOO
+
+Cependant, après avoir ajouté l'octet suivant (à 6,1), il n'y a plus de chemin vers la sortie :
+...#...
+.##..##
+.#..#..
+...#..# 
+###..##
+.##.###
+#.#....
+
+Ainsi, dans cet exemple, les coordonnées du premier octet qui empêche l'accès à la sortie sont 6,1.
+
+Simulez davantage d'octets qui sont sur le point de corrompre votre espace mémoire. Quelles sont les coordonnées du premier octet qui empêcheront la sortie d'être accessible depuis votre position de départ ? (Fournissez la réponse sous forme de deux nombres entiers séparés par une virgule sans autre caractère.)
