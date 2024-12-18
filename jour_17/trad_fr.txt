@@ -1,0 +1,56 @@
+--- Jour 17 : Ordinateur Chronospatial ---
+Les historiens appuient sur le bouton de leur étrange appareil, mais cette fois, vous avez tous l'impression de tomber.
+
+"Situation critique", annonce l'appareil d'une voix familière. "Le processus de démarrage a échoué. Initialisation du débogueur...."
+
+Le petit appareil portable se transforme soudainement en un ordinateur entier ! Les historiens regardent nerveusement autour d’eux avant que l’un d’eux ne vous le lance.
+
+Cela semble être un ordinateur 3 bits : son programme est une liste de nombres 3 bits (0 à 7), comme 0,1,2,3. L'ordinateur dispose également de trois registres nommés A, B et C, mais ces registres ne sont pas limités à 3 bits et peuvent contenir n'importe quel nombre entier.
+
+L'ordinateur connaît huit instructions, chacune identifiée par un nombre de 3 bits (appelé opcode de l'instruction). Chaque instruction lit également le nombre de 3 bits qui le suit comme entrée ; c'est ce qu'on appelle son opérande.
+
+Un nombre appelé pointeur d'instruction identifie la position dans le programme à partir de laquelle le prochain opcode sera lu ; il commence à 0, pointant vers le premier nombre de 3 bits du programme. À l'exception des instructions de saut, le pointeur d'instruction augmente de 2 après le traitement de chaque instruction (pour dépasser l'opcode de l'instruction et son opérande). Si l'ordinateur essaie de lire un opcode après la fin du programme, il s'arrête.
+
+Ainsi, le programme 0,1,2,3 exécuterait l'instruction dont l'opcode est 0 et lui transmettrait l'opérande 1, puis exécuterait l'instruction ayant l'opcode 2 et lui transmettrait l'opérande 3, puis s'arrêterait.
+
+Il existe deux types d'opérandes ; chaque instruction précise le type de son opérande. La valeur d’un opérande littéral est l’opérande lui-même. Par exemple, la valeur de l'opérande littéral 7 est le nombre 7. La valeur d'un opérande combo peut être trouvée comme suit :
+- Les opérandes combo 0 à 3 représentent les valeurs littérales 0 à 3.
+- L'opérande combo 4 représente la valeur du registre A.
+- L'opérande combo 5 représente la valeur du registre B.
+- L'opérande combo 6 représente la valeur du registre C.
+- L'opérande combo 7 est réservé et n'apparaîtra pas dans les programmes valides.
+- Les huit instructions sont les suivantes :
+
+L'instruction adv (opcode 0) effectue la division. Le numérateur est la valeur dans le registre A. Le dénominateur est trouvé en élevant 2 à la puissance de l'opérande combo de l'instruction. (Ainsi, un opérande de 2 diviserait A par 4 (2^2) ; un opérande de 5 diviserait A par 2^B.) Le résultat de l'opération de division est tronqué en un entier puis écrit dans le registre A.
+
+L'instruction bxl (opcode 1) calcule le XOR au niveau du bit du registre B et l'opérande littéral de l'instruction, puis stocke le résultat dans le registre B.
+
+L'instruction bst (opcode 2) calcule la valeur de son opérande combo modulo 8 (en ne gardant ainsi que ses 3 bits les plus bas), puis écrit cette valeur dans le registre B.
+
+L'instruction jnz (opcode 3) ne fait rien si le registre A est à 0. Cependant, si le registre A n'est pas à zéro, il saute en réglant le pointeur d'instruction sur la valeur de son opérande littéral ; si cette instruction saute, le pointeur d'instruction n'est pas augmenté de 2 après cette instruction.
+
+L'instruction bxc (opcode 4) calcule le XOR au niveau du bit du registre B et du registre C, puis stocke le résultat dans le registre B. (Pour des raisons héritées, cette instruction lit un opérande mais l'ignore.)
+
+L'instruction out (opcode 5) calcule la valeur de son opérande combo modulo 8, puis génère cette valeur. (Si un programme génère plusieurs valeurs, elles sont séparées par des virgules.)
+
+L'instruction bdv (opcode 6) fonctionne exactement comme l'instruction adv sauf que le résultat est stocké dans le registre B. (Le numérateur est toujours lu à partir du registre A.)
+
+L'instruction cdv (opcode 7) fonctionne exactement comme l'instruction adv sauf que le résultat est stocké dans le registre C. (Le numérateur est toujours lu à partir du registre A.)
+
+Voici quelques exemples d’opérations d’instructions :
+- Si le registre C contient 9, le programme 2,6 mettrait le registre B à 1.
+- Si le registre A contient 10, le programme 5,0,5,1,5,4 produira 0,1,2.
+- Si le registre A contient 2024, le programme 0,1,5,4,3,0 produira 4,2,5,6,7,7,7,7,3,1,0 et laissera 0 dans le registre A.
+- Si le registre B contient 29, le programme 1,7 mettrait le registre B à 26.
+- Si le registre B contient 2024 et que le registre C contient 43690, le programme 4,0 définirait le registre B sur 44354.
+
+L'étrange appareil des Historiens a fini d'initialiser son débogueur et affiche des informations sur le programme qu'il essaie d'exécuter (votre saisie de puzzle). Par exemple:
+Register A: 729
+Register B: 0
+Register C: 0
+
+Program: 0,1,5,4,3,0
+
+Votre première tâche consiste à déterminer ce que le programme essaie de générer. Pour ce faire, initialisez les registres aux valeurs données, puis exécutez le programme donné, en collectant toute sortie produite par les instructions out. (Toujours joindre les valeurs produites par les instructions out avec des virgules.) Une fois le programme ci-dessus arrêté, sa sortie finale sera 4,6,3,5,6,3,5,2,1,0.
+
+À l'aide des informations fournies par le débogueur, initialisez les registres aux valeurs données, puis exécutez le programme. Une fois qu'il s'arrête, qu'obtenez-vous si vous utilisez des virgules pour joindre les valeurs qu'il génère en une seule chaîne ?
