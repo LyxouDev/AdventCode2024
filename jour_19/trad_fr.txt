@@ -1,0 +1,74 @@
+--- Jour 19 : Disposition du linge ---
+Aujourd'hui, les Historiens vous emmènent aux sources chaudes de Gear Island ! Curieusement, absolument rien ne va de travers alors qu'ils commencent leur recherche minutieuse du vaste champ d'hélices.
+
+Serait-ce enfin votre chance de visiter le onsen voisin ? Une seule façon de le savoir.
+
+Après une brève conversation avec le personnel de la réception du onsen, vous découvrez que vous n'avez pas les moyens financiers nécessaires pour payer les frais d'entrée. Cependant, avant que vous puissiez partir, le personnel attire votre attention. Apparemment, ils ont entendu parler de votre aide aux sources chaudes et ils sont prêts à conclure un marché : si vous pouvez simplement les aider à ranger leurs serviettes, ils vous laisseront entrer gratuitement !
+
+Chaque serviette de cet onsen est marquée d'un motif de rayures colorées. Il n'y a que quelques modèles, mais pour n'importe quel modèle particulier, le personnel peut vous procurer autant de serviettes avec ce motif que vous en avez besoin. Chaque bande peut être blanche (w), bleue (u), noire (b), rouge (r) ou verte (g). Ainsi, une serviette avec le motif ggr aurait une bande verte, une bande verte, puis une bande rouge, dans cet ordre. (Vous ne pouvez pas inverser un motif en retournant une serviette, car cela entraînerait le logo de l'onsen dans le mauvais sens.)
+
+L'expert officiel de la marque Onsen a produit une liste de designs - chacun étant une longue séquence de couleurs de rayures - qu'ils aimeraient pouvoir afficher. Vous pouvez utiliser toutes les serviettes de votre choix, mais toutes les rayures des serviettes doivent correspondre exactement au motif souhaité. Ainsi, pour afficher le motif rgrgr, vous pouvez utiliser deux serviettes rg puis une serviette r, une serviette rgr puis une serviette gr, ou même une seule serviette rgrgr massive (en supposant que de tels modèles de serviettes soient réellement disponibles).
+
+Pour commencer, rassemblez tous les modèles de serviettes disponibles et la liste des modèles souhaités (votre contribution au puzzle). Par exemple:
+r, wr, b, g, bwu, rb, gb, br
+
+brwrr
+bggr
+gbbr
+rrbgbr
+ubwu
+bwurrg
+brgr
+bbrgwb
+
+La première ligne indique les modèles de serviettes disponibles ; dans cet exemple, le onsen dispose d'un nombre illimité de serviettes avec une seule bande rouge (r), d'un nombre illimité de serviettes avec une bande blanche puis d'une bande rouge (wr), et ainsi de suite.
+
+Après la ligne vide, les lignes restantes décrivent chacune un dessin que l'onsen aimerait pouvoir afficher. Dans cet exemple, le premier dessin (brwrr) indique que le onsen aimerait pouvoir afficher une bande noire, une bande rouge, une bande blanche, puis deux bandes rouges, dans cet ordre.
+
+Tous les designs ne seront pas possibles avec les serviettes disponibles. Dans l’exemple ci-dessus, les conceptions sont possibles ou impossibles comme suit :
+- brwrr peut être fait avec une serviette br, puis une serviette wr, et enfin une serviette r.
+- bggr peut être réalisé avec une serviette b, deux serviettes g, puis une serviette r.
+- gbbr peut être fabriqué avec une serviette gb puis une serviette br.
+- rrbgbr peut être créé avec r, rb, g et br.
+- ubwu est impossible.
+- bwurrg peut être créé avec bwu, r, r et g.
+- brgr peut être créé avec br, g et r.
+- bbrgwb est impossible.
+
+
+Dans cet exemple, 6 des huit designs sont possibles avec les modèles de serviettes disponibles.
+
+Pour accéder au onsen le plus rapidement possible, consultez attentivement votre liste de modèles de serviettes et les designs souhaités. Combien de modèles sont possibles ?
+
+--- Deuxième partie ---
+Le personnel n’aime pas vraiment certains arrangements de serviettes que vous avez proposés. Pour éviter un cycle sans fin de réarrangement des serviettes, vous devriez peut-être simplement leur donner toutes les options possibles.
+
+Voici toutes les différentes manières de réaliser les conceptions de l’exemple ci-dessus :
+
+brwrr peut être créé de deux manières différentes : b, r, wr, r ou br, wr, r.
+
+bggr ne peut être créé qu'avec b, g, g et r.
+
+Le gbbr peut être réalisé de 4 manières différentes :
+- g, b, b, r
+- g, b, br
+- gb, b, r
+- gb, br
+
+rrbgbr peut être créé de 6 manières différentes :
+- r, r, b, g, b, r
+- r, r, b, g, br
+- r, r, b, gb, r
+- r, rb, g, b, r
+- r, rb, g, br
+- r, rb, gb, r
+
+bwurrg ne peut être créé qu'avec bwu, r, r et g.
+
+brgr peut être créé de deux manières différentes : b, r, g, r ou br, g, r.
+
+ubwu et bbrgwb sont toujours impossibles.
+
+En additionnant toutes les manières dont les serviettes de cet exemple pourraient être disposées dans les motifs souhaités, on obtient 16 (2 + 1 + 4 + 6 + 1 + 2).
+
+Ils vous laisseront entrer dans le onsen dès que vous aurez la liste. Qu'obtenez-vous si vous additionnez le nombre de façons différentes dont vous pouvez créer chaque motif ?
