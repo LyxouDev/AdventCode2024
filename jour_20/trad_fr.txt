@@ -1,0 +1,174 @@
+--- Jour 20 : Condition de course ---
+Les historiens sont à nouveau assez pixelisés. Cette fois, un immense bâtiment noir se dresse au-dessus de vous : vous êtes juste à l'extérieur du processeur !
+
+Pendant que les Historiens se mettent au travail, un programme à proximité voit que vous êtes inactif et vous défie dans une course. Apparemment, vous êtes arrivé juste à temps pour le festival des conditions de course, qui se déroule fréquemment !
+
+La course se déroule sur un chemin codé particulièrement long et sinueux ; les programmes s'affrontent pour voir qui peut terminer en le moins de picosecondes. Le gagnant reçoit même son propre mutex !
+
+Ils vous remettent une carte de l'hippodrome (votre contribution au puzzle). Par exemple:
+###############
+#...#...#.....#
+#.#.#.#.#.###.#
+#S#...#.#.#...#
+#######.#.#.###
+#######.#.#...#
+#######.#.###.#
+###..E#...#...#
+###.#######.###
+#...###...#...#
+#.#####.#.###.#
+#.#...#.#.#...#
+#.#.#.#.#.#.###
+#...#...#...###
+###############
+
+La carte se compose d'une piste (.) - comprenant les positions de début (S) et de fin (E) (qui comptent également toutes deux comme piste) - et de murs (#).
+
+Lorsqu'un programme parcourt le circuit, il démarre à la position de départ. Ensuite, il est autorisé à se déplacer vers le haut, le bas, la gauche ou la droite ; chacun de ces mouvements prend 1 picoseconde. L’objectif est d’atteindre la position finale le plus rapidement possible. Dans cet exemple de piste de course, le temps le plus rapide est de 84 picosecondes.
+
+Parce qu'il n'y a qu'un seul parcours du début à la fin et que les programmes vont tous à la même vitesse, les courses étaient plutôt ennuyeuses. Pour rendre les choses plus intéressantes, ils ont introduit une nouvelle règle dans les courses : les programmes sont autorisés à tricher.
+
+Les règles en matière de triche sont très strictes. Exactement une fois pendant une course, un programme peut désactiver la collision pendant 2 picosecondes maximum. Cela permet au programme de traverser les murs comme s'il s'agissait d'une piste normale. À la fin de la triche, le programme doit revenir sur la voie normale ; sinon, il recevra une erreur de segmentation et sera disqualifié.
+
+Ainsi, un programme pourrait terminer le parcours en 72 picosecondes (en économisant 12 picosecondes) en trichant pour les deux mouvements marqués 1 et 2 :
+###############
+#...#...12....#
+#.#.#.#.#.###.#
+#S#...#.#.#...#
+#######.#.#.###
+#######.#.#...#
+#######.#.###.#
+###..E#...#...#
+###.#######.###
+#...###...#...#
+#.#####.#.###.#
+#.#...#.#.#...#
+#.#.#.#.#.#.###
+#...#...#...###
+###############
+
+Ou bien, un programme pourrait terminer le parcours en 64 picosecondes (économisant 20 picosecondes) en trichant pour les deux mouvements marqués 1 et 2 :
+###############
+#...#...#.....#
+#.#.#.#.#.###.#
+#S#...#.#.#...#
+#######.#.#.###
+#######.#.#...#
+#######.#.###.#
+###..E#...12..#
+###.#######.###
+#...###...#...#
+#.#####.#.###.#
+#.#...#.#.#...#
+#.#.#.#.#.#.###
+#...#...#...###
+###############
+
+Cette triche permet de gagner 38 picosecondes :
+###############
+#...#...#.....#
+#.#.#.#.#.###.#
+#S#...#.#.#...#
+#######.#.#.###
+#######.#.#...#
+#######.#.###.#
+###..E#...#...#
+###.####1##.###
+#...###.2.#...#
+#.#####.#.###.#
+#.#...#.#.#...#
+#.#.#.#.#.#.###
+#...#...#...###
+###############
+
+Cette triche permet de gagner 64 picosecondes et amène le programme directement à la fin :
+###############
+#...#...#.....#
+#.#.#.#.#.###.#
+#S#...#.#.#...#
+#######.#.#.###
+#######.#.#...#
+#######.#.###.#
+###..21...#...#
+###.#######.###
+#...###...#...#
+#.#####.#.###.#
+#.#...#.#.#...#
+#.#.#.#.#.#.###
+#...#...#...###
+###############
+
+Chaque triche a une position de départ distincte (la position où la triche est activée, juste avant le premier mouvement autorisé à traverser les murs) et une position finale ; les tricheurs sont identifiés de manière unique par leur position de départ et leur position finale.
+
+Dans cet exemple, le nombre total de tricheurs (regroupés selon le temps gagné) est le suivant :
+- Il existe 14 astuces qui permettent de gagner 2 picosecondes.
+- Il existe 14 astuces qui permettent de gagner 4 picosecondes.
+- Il existe 2 astuces qui permettent de gagner 6 picosecondes.
+- Il existe 4 astuces qui permettent de gagner 8 picosecondes.
+- Il existe 2 astuces qui permettent de gagner 10 picosecondes.
+- Il existe 3 astuces qui permettent de gagner 12 picosecondes.
+- Il existe une astuce qui permet de gagner 20 picosecondes.
+- Il existe une astuce qui permet de gagner 36 picosecondes.
+- Il existe une astuce qui permet de gagner 38 picosecondes.
+- Il existe une astuce qui permet de gagner 40 picosecondes.
+- Il existe une astuce qui permet d'économiser 64 picosecondes.
+
+Vous n'êtes pas sûr des conditions du circuit, donc pour vous donner autant d'options que possible, vous aurez besoin d'une liste des meilleures astuces. Combien de astuces vous feraient gagner au moins 100 picosecondes ?
+
+--- Deuxième partie ---
+Les programmes semblent perplexes face à votre liste de tricheurs. Apparemment, la règle de triche des deux picosecondes est obsolète depuis plusieurs millisecondes ! La dernière version de la règle de triche autorise une seule triche qui dure au maximum 20 picosecondes.
+
+Désormais, en plus de toutes les astuces possibles en seulement deux picosecondes, de nombreuses autres astuces sont possibles. Cette triche de six picosecondes permet d'économiser 76 picosecondes :
+###############
+#...#...#.....#
+#.#.#.#.#.###.#
+#S#...#.#.#...#
+#1#####.#.#.###
+#2#####.#.#...#
+#3#####.#.###.#
+#456.E#...#...#
+###.#######.###
+#...###...#...#
+#.#####.#.###.#
+#.#...#.#.#...#
+#.#.#.#.#.#.###
+#...#...#...###
+###############
+
+Parce que cette triche a les mêmes positions de début et de fin que celle ci-dessus, c'est la même triche, même si le chemin emprunté pendant la triche est différent :
+###############
+#...#...#.....#
+#.#.#.#.#.###.#
+#S12..#.#.#...#
+###3###.#.#.###
+###4###.#.#...#
+###5###.#.###.#
+###6.E#...#...#
+###.#######.###
+#...###...#...#
+#.#####.#.###.#
+#.#...#.#.#...#
+#.#.#.#.#.#.###
+#...#...#...###
+###############
+
+Les astuces n'ont pas besoin d'utiliser les 20 picosecondes ; les astuces peuvent durer n'importe quelle durée, jusqu'à 20 picosecondes incluses (mais ne peuvent toujours se terminer que lorsque le programme est sur la bonne voie). Tout temps de triche non utilisé est perdu ; il ne peut pas être sauvegardé pour une autre triche plus tard.
+
+Vous aurez toujours besoin d'une liste des meilleures astuces, mais il y a désormais encore plus de choix. Voici les quantités de astuces dans cet exemple qui permettent de gagner 50 picosecondes ou plus :
+
+- Il existe 32 astuces qui permettent de gagner 50 picosecondes.
+- Il existe 31 astuces qui permettent d'économiser 52 picosecondes.
+- Il existe 29 astuces qui permettent d'économiser 54 picosecondes.
+- Il existe 39 astuces qui permettent d'économiser 56 picosecondes.
+- Il existe 25 astuces qui permettent d'économiser 58 picosecondes.
+- Il existe 23 astuces qui permettent d'économiser 60 picosecondes.
+- Il existe 20 astuces qui permettent d'économiser 62 picosecondes.
+- Il existe 19 astuces qui permettent d'économiser 64 picosecondes.
+- Il existe 12 astuces qui permettent d'économiser 66 picosecondes.
+- Il existe 14 astuces qui permettent d'économiser 68 picosecondes.
+- Il existe 12 astuces qui permettent de gagner 70 picosecondes.
+- Il existe 22 astuces qui permettent d'économiser 72 picosecondes.
+- Il existe 4 astuces qui permettent d'économiser 74 picosecondes.
+- Il existe 3 astuces qui permettent d'économiser 76 picosecondes.
+
+Trouvez les meilleures astuces en utilisant les règles de triche mises à jour. Combien de astuces vous feraient gagner au moins 100 picosecondes ?
