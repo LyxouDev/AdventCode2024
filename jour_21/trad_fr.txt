@@ -1,0 +1,102 @@
+--- Jour 21 : L'énigme du clavier ---
+Alors que vous vous téléportez sur le vaisseau de classe Renne du Père Noël, les historiens commencent à paniquer : un membre de leur équipe de recherche a disparu. Une analyse rapide des formes de vie par l'ordinateur du navire révèle que lorsque l'historien disparu s'est téléporté, il est arrivé dans une autre partie du navire.
+
+La porte de cette zone est verrouillée, mais l'ordinateur ne peut pas l'ouvrir ; il ne peut être ouvert qu'en tapant physiquement les codes de la porte (votre saisie de puzzle) sur le clavier numérique de la porte.
+
+Le pavé numérique comporte quatre rangées de boutons : 789, 456, 123, et enfin un espace vide suivi de 0A. Visuellement, ils sont disposés ainsi :
++---+---+---+
+| 7 | 8 | 9 |
++---+---+---+
+| 4 | 5 | 6 |
++---+---+---+
+| 1 | 2 | 3 |
++---+---+---+
+    | 0 | A |
+    +---+---+
+
+Malheureusement, la zone située à l’extérieur de la porte est actuellement dépressurisée et personne ne peut s’approcher de la porte. Un robot doit être envoyé à la place.
+
+Le robot n'a aucun problème à naviguer dans le navire et à trouver le clavier numérique, mais il n'est pas conçu pour appuyer sur un bouton : on ne peut pas lui dire d'appuyer directement sur un bouton spécifique. Au lieu de cela, il dispose d’un bras robotique qui peut être contrôlé à distance via un clavier directionnel.
+
+Le clavier directionnel comporte deux rangées de boutons : un écart / ^ (haut) / A (activer) sur la première rangée et < (gauche) / v (bas) / > (droite) sur la deuxième rangée. Visuellement, ils sont disposés ainsi :
+    +---+---+
+    | ^ | A |
++---+---+---+
+| < | v | > |
++---+---+---+
+
+Lorsque le robot arrive au clavier numérique, son bras robotique est pointé vers le bouton A dans le coin inférieur droit. Ensuite, cette télécommande à clavier directionnel doit être utilisée pour manœuvrer le bras robotique : les boutons haut/bas/gauche/droite lui font déplacer son bras d'un bouton dans cette direction, et le bouton A fait avancer brièvement le robot, en appuyant sur le bouton visé par le bras robotique.
+
+Par exemple, pour que le robot tape 029A sur le clavier numérique, une séquence de saisies sur le clavier directionnel que vous pouvez utiliser est :
+- < pour déplacer le bras de A (sa position initiale) à 0.
+- A pour appuyer sur le bouton 0.
+- ^A pour déplacer le bras vers le bouton 2 et appuyer dessus.
+- >^^A pour déplacer le bras vers le bouton 9 et appuyer dessus.
+- vvvA pour déplacer le bras vers le bouton A et appuyer dessus.
+
+Au total, il existe trois séquences d'appuis sur les boutons les plus courtes possibles sur ce clavier directionnel qui amèneraient le robot à taper 029A : <A^A>^^AvvvA, <A^A^>^AvvvA et <A^A^^ >AvvvA.
+
+Malheureusement, la zone contenant cette télécommande à clavier directionnel subit actuellement des niveaux de rayonnement élevés et personne ne peut s'en approcher. Un robot doit être envoyé à la place.
+
+Lorsque le robot arrive au clavier directionnel, son bras de robot est pointé vers le bouton A dans le coin supérieur droit. Ensuite, une deuxième télécommande à clavier directionnel différent est utilisée pour contrôler ce robot (de la même manière que le premier robot, sauf que celui-ci tape sur un clavier directionnel au lieu d'un clavier numérique).
+
+Il existe plusieurs séquences les plus courtes possibles de pressions sur les boutons du clavier directionnel qui amèneraient ce robot à dire au premier robot de taper 029A sur la porte. Une de ces séquences est v<<A>>^A<A>AvA<^AA>A<vAAA>^A.
+
+Malheureusement, la zone contenant cette deuxième télécommande à clavier directionnel est actuellement à -40 degrés ! Un autre robot devra également être envoyé pour taper sur ce clavier directionnel.
+
+Il existe de nombreuses séquences les plus courtes possibles d'appuis sur les boutons du clavier directionnel qui amèneraient ce robot à dire au deuxième robot de dire au premier robot de taper éventuellement 029A sur la porte. Une de ces séquences est <vA<AA>>^AvAA<^A>A<v<A>>^AvA^A<vA>^A<v<A>^A>AAvA^A<v<A>A> ^AAAvA<^A>A.
+
+Malheureusement, la zone contenant cette troisième télécommande à clavier directionnel est actuellement pleine d'historiens, donc aucun robot ne peut y trouver un chemin clair. Au lieu de cela, vous devrez saisir cette séquence vous-même.
+
+Si vous deviez choisir cette séquence de pressions sur les boutons, voici tous les boutons qui seraient enfoncés sur votre clavier directionnel, les claviers directionnels des deux robots et le clavier numérique :
+<vA<AA>>^AvAA<^A>A<v<A>>^AvA^A<vA>^A<v<A>^A>AAvA^A<v<A>A>^AAAvA<^A>A
+v<<A>>^A<A>AvA<^AA>A<vAAA>^A
+<A^A>^^AvvvA
+029A
+
+En résumé, il existe les claviers suivants :
+- Un clavier directionnel que vous utilisez.
+- Deux claviers directionnels utilisés par les robots.
+- Un clavier numérique (sur une porte) utilisé par un robot.
+
+Il est important de rappeler que ces robots ne sont pas conçus pour appuyer sur des boutons. En particulier, si jamais un bras de robot vise un espace où aucun bouton n'est présent sur le clavier, même pendant un instant, le robot paniquera de manière irréversible. Alors, ne fais pas ça. Tous les robots viseront dans un premier temps la touche A du clavier, où qu'elle se trouve.
+
+Pour déverrouiller la porte, cinq codes devront être tapés sur son clavier numérique. Par exemple:
+029A
+980A
+179A
+456A
+379A
+
+Pour chacun d'entre eux, voici une séquence la plus courte d'appuis sur des boutons que vous pouvez taper pour que le code souhaité soit saisi sur le clavier numérique :
+029A: <vA<AA>>^AvAA<^A>A<v<A>>^AvA^A<vA>^A<v<A>^A>AAvA^A<v<A>A>^AAAvA<^A>A
+980A: <v<A>>^AAAvA^A<vA<AA>>^AvAA<^A>A<v<A>A>^AAAvA<^A>A<vA>^A<A>A
+179A: <v<A>>^A<vA<A>>^AAvAA<^A>A<v<A>>^AAvA^A<vA>^AA<A>A<v<A>A>^AAAvA<^A>A
+456A: <v<A>>^AA<vA<A>>^AAvAA<^A>A<vA>^A<A>A<vA>^A<A>A<v<A>A>^AAvA<^A>A
+379A: <v<A>>^AvA^A<vA<AA>>^AAvA<^A>AAvA^A<vA>^AA<A>A<v<A>A>^AAAvA<^A>A
+
+Les historiens deviennent nerveux ; l'ordinateur du navire ne se souvient pas si l'historien disparu est piégé dans la zone contenant un électro-aimant géant ou de la lave en fusion. Vous devrez vous assurer que pour chacun des cinq codes, vous trouvez la séquence de pressions sur les boutons la plus courte nécessaire.
+
+La complexité d'un seul code (comme 029A) est égale au résultat de la multiplication de ces deux valeurs :
+- La durée de la séquence la plus courte de pressions sur les boutons que vous devez taper sur votre clavier directionnel afin que le code soit tapé sur le clavier numérique ; pour 029A, ce serait 68.
+- La partie numérique du code (en ignorant les zéros non significatifs) ; pour 029A, ce serait 29.
+
+Dans l'exemple ci-dessus, la complexité des cinq codes peut être trouvée en calculant 68 * 29, 60 * 980, 68 * 179, 64 * 456 et 64 * 379. Les additionner ensemble produit 126384.
+
+Trouvez le nombre minimum de pressions sur les boutons que vous devrez effectuer pour que le robot devant la porte tape chaque code. Quelle est la somme des complexités des cinq codes de votre liste ?
+
+--- Deuxième partie ---
+Au moment où l'historien disparu est libéré, les historiens se rendent compte qu'un deuxième membre de leur équipe de recherche a également disparu pendant tout ce temps !
+
+Une analyse rapide de la forme de vie révèle que l'historien est également piégé dans une zone verrouillée du navire. En raison de divers dangers, les robots sont à nouveau envoyés, formant une autre chaîne de claviers de télécommande gérant des robots brandissant des bras robotiques.
+
+Cette fois, beaucoup plus de robots sont impliqués. En résumé, il existe les claviers suivants :
+- Un clavier directionnel que vous utilisez.
+- 25 claviers directionnels utilisés par les robots.
+- Un clavier numérique (sur une porte) utilisé par un robot.
+
+Les claviers forment une chaîne, comme avant : votre clavier directionnel contrôle un robot qui tape sur un clavier directionnel qui contrôle un robot qui tape sur un clavier directionnel... et ainsi de suite, pour finir avec le robot qui tape sur le clavier. clavier numérique.
+
+Les codes de porte sont les mêmes cette fois-ci ; seul le nombre de robots et de claviers directionnels a changé.
+
+Trouvez le nombre minimum de pressions sur les boutons que vous devrez effectuer pour que le robot devant la porte tape chaque code. Quelle est la somme des complexités des cinq codes de votre liste ?
