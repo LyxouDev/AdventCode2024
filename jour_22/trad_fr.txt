@@ -1,0 +1,108 @@
+--- Jour 22 : Marché aux singes ---
+Alors que vous êtes tous téléportés au plus profond de la jungle, un singe vole l'appareil des Historiens ! Vous devrez le récupérer pendant que les historiens recherchent le chef.
+
+Le singe qui a volé l'appareil semble prêt à l'échanger, mais seulement en échange d'un nombre absurde de bananes. Votre seule option est d’acheter des bananes sur le Monkey Exchange Market.
+
+Vous ne savez pas comment fonctionne le marché d'échange des singes, mais l'un des historiens sent le problème et vient vous aider. Apparemment, ils étudient ces singes depuis un moment et ont déchiffré leurs secrets.
+
+Aujourd'hui, le marché est rempli de singes qui achètent de bonnes cachettes. Heureusement, grâce au temps que vous avez récemment passé dans cette jungle, vous connaissez de nombreuses bonnes cachettes que vous pouvez vendre ! Si vous vendez suffisamment de cachettes, vous devriez pouvoir obtenir suffisamment de bananes pour racheter l'appareil.
+
+Sur le Marché, les acheteurs semblent utiliser des prix aléatoires, mais leurs prix ne sont en réalité que pseudo-aléatoires ! Si vous connaissez le secret de la façon dont ils fixent leurs prix, vous pouvez attendre le moment idéal pour vendre.
+
+La partie concernant les secrets est littérale, explique l'historien. Chaque acheteur produit une séquence pseudo-aléatoire de numéros secrets où chaque secret est dérivé du précédent.
+
+En particulier, le numéro secret de chaque acheteur évolue vers le numéro secret suivant dans la séquence via le processus suivant :
+- Calculez le résultat de la multiplication du nombre secret par 64. Ensuite, mélangez ce résultat avec le nombre secret. Enfin, élaguez le numéro secret.
+- Calculez le résultat de la division du nombre secret par 32. Arrondissez le résultat à l’entier le plus proche. Ensuite, mélangez ce résultat dans le numéro secret. Enfin, élaguez le numéro secret.
+- Calculez le résultat de la multiplication du nombre secret par 2048. Ensuite, mélangez ce résultat avec le nombre secret. Enfin, élaguez le numéro secret.
+
+Chaque étape du processus ci-dessus implique le mélange et la taille :
+- Pour mélanger une valeur dans le numéro secret, calculez le XOR au niveau du bit de la valeur donnée et du numéro secret. Le numéro secret devient alors le résultat de cette opération. (Si le nombre secret est 42 et que vous mélangez 15 dans le nombre secret, le nombre secret deviendra 37.)
+- Pour élaguer le numéro secret, calculez la valeur du numéro secret modulo 16777216. Ensuite, le numéro secret devient le résultat de cette opération. (Si le numéro secret est 100000000 et que vous deviez élaguer le numéro secret, le numéro secret deviendrait 16113920.)
+- Une fois ce processus terminé, l’acheteur se retrouve avec le numéro secret suivant dans la séquence. L’acheteur peut répéter ce processus autant de fois que nécessaire pour produire davantage de numéros secrets.
+
+Ainsi, si un acheteur avait un numéro secret de 123, les dix prochains numéros secrets de cet acheteur seraient :
+15887950
+16495136
+527345
+704524
+1553684
+12683156
+11100544
+12249484
+7753432
+5908254
+
+Chaque acheteur utilise son propre numéro secret lors du choix de son prix, il est donc important de pouvoir prédire la séquence de numéros secrets pour chaque acheteur. Heureusement, les recherches de l'historien ont révélé le numéro secret initial de chaque acheteur (votre réponse au puzzle). Par exemple:
+1
+10
+100
+2024
+
+Cette liste décrit le numéro secret initial de quatre acheteurs différents de cachettes secrètes sur le Monkey Exchange Market. Si vous pouvez simuler les numéros secrets de chaque acheteur, vous pourrez prédire tous leurs prix futurs.
+
+En une seule journée, les acheteurs ont chacun le temps de générer 2000 nouveaux numéros secrets. Dans cet exemple, pour chaque acheteur, son numéro secret initial et le 2000ème nouveau numéro secret qu'il générerait sont :
+1: 8685429
+10: 4700978
+100: 15273692
+2024: 8667524
+
+L'addition du 2000ème nouveau numéro secret pour chaque acheteur donne 37327623.
+
+Pour chaque acheteur, simulez la création de 2000 nouveaux numéros secrets. Quelle est la somme du 2000ème numéro secret généré par chaque acheteur ?
+--- Deuxième partie ---
+Bien entendu, les chiffres secrets ne correspondent pas aux prix proposés par chaque acheteur ! Ce serait ridicule. Au lieu de cela, les prix proposés par l’acheteur ne sont que les chiffres de chacun de leurs numéros secrets.
+
+Ainsi, si un acheteur commence avec un nombre secret de 123, les dix premiers prix de cet acheteur seraient :
+3 (from 123)
+0 (from 15887950)
+6 (from 16495136)
+5 (etc.)
+4
+4
+6
+4
+4
+2
+
+Ce prix correspond au nombre de bananes que l'acheteur propose en échange de vos informations sur une nouvelle cachette. Cependant, vous ne parlez toujours pas singe et vous ne pouvez donc pas négocier directement avec les acheteurs. L'historien parle un peu, mais pas assez pour négocier ; au lieu de cela, il peut demander à un autre singe de négocier en votre nom.
+
+Malheureusement, le singe ne sait comment décider quand vendre qu’en observant les changements de prix. Plus précisément, le singe recherchera uniquement une séquence spécifique de quatre changements de prix consécutifs, puis vendra immédiatement lorsqu'il verra cette séquence.
+
+Ainsi, si un acheteur commence avec un numéro secret de 123, les dix premiers numéros secrets, les prix et les modifications associées de cet acheteur seraient :
+     123: 3 
+15887950: 0 (-3)
+16495136: 6 (6)
+  527345: 5 (-1)
+  704524: 4 (-1)
+ 1553684: 4 (0)
+12683156: 6 (2)
+11100544: 4 (-2)
+12249484: 4 (0)
+ 7753432: 2 (-2)
+
+ Notez que le premier prix n’a aucune modification associée car il n’y avait aucun prix précédent avec lequel le comparer.
+
+Dans ce court exemple, parmi ces premiers prix, le prix le plus élevé sera 6, il serait donc bien de donner au singe des instructions qui lui permettraient de vendre à ce moment-là. Le premier 6 se produit après seulement deux changements, il n'y a donc aucun moyen de demander au singe de vendre à ce moment-là, mais le second 6 se produit après les changements -1,-1,0,2. Ainsi, si vous donnez au singe cette séquence de changements, il attendra la première fois qu'il verra cette séquence, puis vendra immédiatement les informations sur votre cachette au prix actuel, vous gagnant 6 bananes.
+
+Chaque acheteur ne souhaite acheter qu'une seule cachette, donc une fois la cachette vendue, le singe passera au prochain acheteur. Si le singe n’entend jamais cette séquence de changements de prix de la part d’un acheteur, il ne vendra jamais et passera simplement à l’acheteur suivant.
+
+Pire encore, vous ne pouvez donner au singe qu’une seule séquence de quatre changements de prix à rechercher. Vous ne pouvez pas modifier la séquence entre les acheteurs.
+
+Vous aurez besoin d'autant de bananes que possible, vous devrez donc déterminer quelle séquence de quatre changements de prix amènera le singe à vous procurer le plus de bananes au total. Chaque acheteur va générer 2000 numéros secrets après son numéro secret initial, donc, pour chaque acheteur, vous aurez 2000 changements de prix dans lesquels votre séquence pourra se produire.
+
+Supposons que le numéro secret initial de chaque acheteur soit :
+1
+2
+3
+2024
+
+Il existe de nombreuses séquences de quatre changements de prix que vous pourriez indiquer au singe, mais pour ces quatre acheteurs, la séquence qui vous rapportera le plus de bananes est -2,1,-1,3. En utilisant cette séquence, le singe réalisera les ventes suivantes :
+- Pour l'acheteur avec un numéro secret initial de 1, les changements -2,1,-1,3 se produisent d'abord lorsque le prix est de 7.
+- Pour l'acheteur avec le secret initial 2, les changements -2,1,-1,3 se produisent d'abord lorsque le prix est 7.
+- Pour l'acheteur avec le secret initial 3, la séquence de modification -2,1,-1,3 ne se produit pas dans les 2000 premières modifications.
+- Pour l'acheteur à partir de 2024, les changements -2,1,-1,3 se produisent pour la première fois lorsque le prix est de 9.
+
+Ainsi, en demandant au singe de vendre la première fois que les prix de chaque acheteur baissent de 2, puis augmentent de 1, puis baissent de 1, puis augmentent de 3, vous obtiendrez 23 (7 + 7 + 9) bananes !
+
+Déterminez la meilleure séquence à indiquer au singe afin qu'en recherchant la même séquence de changements dans les prix futurs de chaque acheteur, vous obteniez le plus de bananes au total. Quel est le plus grand nombre de bananes que vous puissiez obtenir ?
