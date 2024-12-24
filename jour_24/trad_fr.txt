@@ -1,0 +1,185 @@
+--- Jour 24 : Fils croisés ---
+Vous et les Historiens arrivez à l'orée d'un grand bosquet quelque part dans la jungle. Après le dernier incident, les Elfes ont installé un petit appareil qui surveille les fruits. Pendant que les historiens fouillent le bosquet, l'un d'eux vous demande si vous pouvez jeter un œil au dispositif de surveillance ; apparemment, il y a eu un dysfonctionnement récemment.
+
+L'appareil semble essayer de produire un nombre via des portes logiques booléennes. Chaque porte a deux entrées et une sortie. Les portes fonctionnent toutes sur des valeurs vraies (1) ou fausses (0).
+
+- Les portes ET produisent 1 si les deux entrées sont 1 ; si l’une des entrées est 0, ces portes produisent 0.
+- Les portes OU produisent 1 si une ou les deux entrées sont 1 ; si les deux entrées sont à 0, ces portes produisent 0.
+- Les portes XOR produisent 1 si les entrées sont différentes ; si les entrées sont les mêmes, ces portes produisent 0.
+
+Les portes attendent que les deux entrées soient reçues avant de produire une sortie ; les fils peuvent porter 0, 1 ou aucune valeur du tout. Il n'y a pas de boucles ; une fois qu'une porte a déterminé sa sortie, la sortie ne changera pas jusqu'à ce que l'ensemble du système soit réinitialisé. Chaque fil est connecté à au plus une sortie de porte, mais peut être connecté à plusieurs entrées de porte.
+
+Plutôt que de risquer d'être choqué en bricolant le système en direct, vous notez toutes les connexions de porte et les valeurs initiales des fils (votre entrée de puzzle) afin de pouvoir les considérer en toute sécurité. Par exemple:
+x00: 1
+x01: 1
+x02: 1
+y00: 0
+y01: 1
+y02: 0
+
+x00 AND y00 -> z00
+x01 XOR y01 -> z01
+x02 OR y02 -> z02
+
+Étant donné que les portes attendent une entrée, certains fils doivent commencer par une valeur (en tant qu'entrées pour l'ensemble du système). La première section précise ces valeurs. Par exemple, x00 : 1 signifie que le fil nommé x00 commence par la valeur 1 (comme si une porte émettait déjà cette valeur sur ce fil).
+
+La deuxième section répertorie toutes les portes et les fils qui y sont connectés. Par exemple, x00 AND y00 -> z00 décrit une instance d'une porte AND qui a des fils x00 et y00 connectés à ses entrées et qui écrira sa sortie sur le fil z00.
+
+Dans cet exemple, la simulation de ces portes fait finalement apparaître 0 sur le fil z00, 0 sur le fil z01 et 1 sur le fil z02.
+
+En fin de compte, le système tente de produire un nombre en combinant les bits de tous les fils commençant par z. z00 est le bit le moins significatif, puis z01, puis z02, et ainsi de suite.
+
+Dans cet exemple, les trois bits de sortie forment le nombre binaire 100 qui est égal au nombre décimal 4.
+
+Voici un exemple plus grand :
+x00: 1
+x01: 0
+x02: 1
+x03: 1
+x04: 0
+y00: 1
+y01: 1
+y02: 1
+y03: 1
+y04: 1
+
+ntg XOR fgs -> mjb
+y02 OR x01 -> tnw
+kwq OR kpj -> z05
+x00 OR x03 -> fst
+tgd XOR rvg -> z01
+vdt OR tnw -> bfw
+bfw AND frj -> z10
+ffh OR nrd -> bqk
+y00 AND y03 -> djm
+y03 OR y00 -> psh
+bqk OR frj -> z08
+tnw OR fst -> frj
+gnj AND tgd -> z11
+bfw XOR mjb -> z00
+x03 OR x00 -> vdt
+gnj AND wpb -> z02
+x04 AND y00 -> kjc
+djm OR pbm -> qhw
+nrd AND vdt -> hwm
+kjc AND fst -> rvg
+y04 OR y02 -> fgs
+y01 AND x02 -> pbm
+ntg OR kjc -> kwq
+psh XOR fgs -> tgd
+qhw XOR tgd -> z09
+pbm OR djm -> kpj
+x03 XOR y03 -> ffh
+x00 XOR y04 -> ntg
+bfw OR bqk -> z06
+nrd XOR fgs -> wpb
+frj XOR qhw -> z04
+bqk OR frj -> z07
+y03 OR x01 -> nrd
+hwm AND bqk -> z03
+tgd XOR rvg -> z12
+tnw OR pbm -> gnj
+
+Après avoir attendu les valeurs sur tous les fils commençant par z, les fils de ce système ont les valeurs suivantes :
+bfw: 1
+bqk: 1
+djm: 1
+ffh: 0
+fgs: 1
+frj: 1
+fst: 1
+gnj: 1
+hwm: 1
+kjc: 0
+kpj: 1
+kwq: 0
+mjb: 1
+nrd: 1
+ntg: 0
+pbm: 1
+psh: 1
+qhw: 1
+rvg: 0
+tgd: 0
+tnw: 1
+vdt: 1
+wpb: 0
+z00: 0
+z01: 0
+z02: 0
+z03: 1
+z04: 0
+z05: 1
+z06: 1
+z07: 1
+z08: 1
+z09: 1
+z10: 1
+z11: 0
+z12: 0
+
+La combinaison des bits de tous les fils commençant par z produit le nombre binaire 0011111101000. La conversion de ce nombre en décimal produit 2024.
+
+Simulez le système de portes et de fils. Quel nombre décimal affiche-t-il sur les fils commençant par z ?
+
+--- Deuxième partie ---
+Après avoir inspecté de plus près le dispositif de surveillance, vous déterminez que le système que vous simulez tente d'ajouter deux nombres binaires.
+
+Plus précisément, il traite les bits des fils commençant par x comme un nombre binaire, traite les bits des fils commençant par y comme un deuxième nombre binaire, puis tente d'additionner ces deux nombres. Le résultat de cette opération est produit sous forme de nombre binaire sur les fils commençant par z. (Dans les trois cas, le fil 00 est le bit le moins significatif, puis 01, puis 02, et ainsi de suite.)
+
+Les valeurs initiales des fils dans votre entrée de puzzle ne représentent qu'une instance d'une paire de nombres dont la somme est incorrecte. En fin de compte, deux nombres binaires fournis en entrée doivent être traités correctement. Autrement dit, pour toute combinaison de bits sur des fils commençant par x et de fils commençant par y, la somme des deux nombres représentés par ces bits doit être produite sous forme de nombre binaire sur les fils commençant par z.
+
+Par exemple, si vous disposez d'un système d'addition avec quatre fils x, quatre fils y et cinq fils z, vous devriez pouvoir fournir n'importe quel nombre de quatre bits sur les fils x, n'importe quel nombre de quatre bits sur les nombres y, et finalement, trouvez la somme de ces deux nombres sous la forme d'un nombre de cinq bits sur les fils z. L'une des nombreuses façons de fournir des nombres à un tel système serait de transmettre 11 sur les fils x (1011 en binaire) et 13 sur les fils y (1101 en binaire) :x00: 1
+x01: 1
+x02: 0
+x03: 1
+y00: 1
+y01: 0
+y02: 1
+y03: 1
+
+Si le système fonctionnait correctement, une fois le traitement de toutes les portes terminé, vous devriez trouver 24 (11+13) sur les fils z sous la forme du nombre binaire à cinq bits 11000 :
+z00: 0
+z01: 0
+z02: 0
+z03: 1
+z04: 1
+
+Malheureusement, votre système actuel doit ajouter des nombres avec beaucoup plus de bits et comporte donc beaucoup plus de fils.
+
+Sur la base d'une analyse médico-légale des éraflures et des rayures sur l'appareil, vous pouvez déterminer qu'il existe exactement quatre paires de portes dont les fils de sortie ont été inversés. (Une porte ne peut appartenir qu'à une seule de ces paires ; la sortie d'aucune porte n'a été permutée plusieurs fois.)
+
+Par exemple, le système ci-dessous est censé trouver le ET au niveau du bit du nombre à six bits de x00 à x05 et le nombre à six bits de y00 à y05, puis écrire le résultat sous la forme d'un nombre à six bits de z00 à z05 :
+x00: 0
+x01: 1
+x02: 0
+x03: 1
+x04: 0
+x05: 1
+y00: 0
+y01: 0
+y02: 1
+y03: 1
+y04: 0
+y05: 1
+
+x00 AND y00 -> z05
+x01 AND y01 -> z02
+x02 AND y02 -> z01
+x03 AND y03 -> z03
+x04 AND y04 -> z04
+x05 AND y05 -> z00
+
+Cependant, dans cet exemple, les fils de sortie de deux paires de portes ont été inversés, ce qui a amené le système à produire de mauvaises réponses. La première paire de portes avec des sorties échangées est x00 AND y00 -> z05 et x05 AND y05 -> z00 ; la deuxième paire de portes est x01 ET y01 -> z02 et x02 ET y02 -> z01. La correction de ces deux échanges aboutit à ce système qui fonctionne comme prévu pour tout ensemble de valeurs initiales sur les fils commençant par x ou y :
+x00 AND y00 -> z00
+x01 AND y01 -> z01
+x02 AND y02 -> z02
+x03 AND y03 -> z03
+x04 AND y04 -> z04
+x05 AND y05 -> z05
+
+Dans cet exemple, deux paires de portes ont des sorties impliquées dans un échange. En triant les noms de leurs fils de sortie et en les joignant par des virgules, la liste des fils impliqués dans les échanges est z00,z01,z02,z05.
+
+Bien sûr, votre système actuel est beaucoup plus complexe que cela, et les portes dont les sorties doivent être échangées peuvent être n'importe où, pas seulement attachées à un fil commençant par z. Si vous deviez déterminer que vous devez échanger les fils de sortie aaa avec eee, ooo avec z99, bbb avec ccc et aoc avec z24, votre réponse serait aaa, aoc, bbb, ccc, eee, ooo, z24, z99.
+
+Votre système de portes et de fils comporte quatre paires de portes dont les fils de sortie doivent être échangés - huit fils au total. Déterminez quelles quatre paires de portes doivent permuter leurs sorties afin que votre système effectue correctement l'addition ; qu'obtenez-vous si vous triez les noms des huit fils impliqués dans un échange et que vous joignez ensuite ces noms par des virgules ?
