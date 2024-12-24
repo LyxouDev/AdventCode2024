@@ -1,0 +1,82 @@
+--- Jour 23 : LAN Party ---
+Alors que les Historiens se promènent dans une zone sécurisée du QG de Easter Bunny, vous tombez sur des affiches pour une LAN party prévue aujourd'hui ! Peut-être que vous pourrez le trouver ; vous vous connectez à un port de liaison de données à proximité et téléchargez une carte du réseau local (votre entrée de puzzle).
+
+La carte du réseau fournit une liste de chaque connexion entre deux ordinateurs. Par exemple:
+kh-tc
+qp-kh
+de-cg
+ka-co
+yn-aq
+qp-ub
+cg-tb
+vc-aq
+tb-ka
+wh-tc
+yn-cg
+kh-ub
+ta-co
+de-co
+tc-td
+tb-wq
+wh-td
+ta-ka
+td-qp
+aq-cg
+wq-ub
+ub-vc
+de-ta
+wq-aq
+wq-vc
+wh-yn
+ka-de
+kh-ta
+co-tc
+wh-qp
+tb-vc
+td-yn
+
+Chaque ligne de texte dans la carte du réseau représente une seule connexion ; la ligne kh-tc représente une connexion entre l'ordinateur nommé kh et l'ordinateur nommé tc. Les connexions ne sont pas directionnelles ; tc-kh signifierait exactement la même chose.
+
+Les soirées LAN impliquent généralement des jeux multijoueurs, vous pouvez donc peut-être les localiser en recherchant des groupes d'ordinateurs connectés. Commencez par rechercher des ensembles de trois ordinateurs où chaque ordinateur de l’ensemble est connecté aux deux autres ordinateurs.
+
+Dans cet exemple, il existe 12 ensembles de trois ordinateurs interconnectés :
+aq,cg,yn
+aq,vc,wq
+co,de,ka
+co,de,ta
+co,ka,ta
+de,ka,ta
+kh,qp,ub
+qp,td,wh
+tb,vc,wq
+tc,td,wh
+td,wh,yn
+ub,vc,wq
+
+Si l'historien en chef est ici et qu'il participe à la soirée LAN, il serait préférable de le savoir tout de suite. Vous êtes presque sûr que le nom de son ordinateur commence par t, alors considérez uniquement les ensembles de trois ordinateurs dont au moins un nom d'ordinateur commence par t. Cela réduit la liste à 7 ensembles de trois ordinateurs interconnectés :
+co,de,ta
+co,ka,ta
+de,ka,ta
+qp,td,wh
+tb,vc,wq
+tc,td,wh
+td,wh,yn
+
+Trouvez tous les ensembles de trois ordinateurs interconnectés. Combien contiennent au moins un ordinateur dont le nom commence par t ?
+
+--- Deuxième partie ---
+Il y a encore beaucoup trop de résultats pour les parcourir tous. Vous devrez trouver la LAN Party d'une autre manière et vous y rendre vous-même.
+
+Puisqu'il ne semble pas y avoir d'employés dans les parages, vous pensez qu'ils doivent tous être à la soirée LAN. Si cela est vrai, le groupe LAN sera le plus grand ensemble d'ordinateurs tous connectés les uns aux autres. Autrement dit, pour chaque ordinateur du groupe LAN, cet ordinateur aura une connexion à tous les autres ordinateurs du groupe LAN.
+
+Dans l’exemple ci-dessus, le plus grand ensemble d’ordinateurs tous connectés les uns aux autres est composé de co, de, ka et ta. Chaque ordinateur de cet ensemble dispose d'une connexion à tous les autres ordinateurs de l'ensemble :
+ka-co
+ta-co
+de-co
+ta-ka
+de-ta
+ka-de
+
+Les affiches de la LAN Party indiquent que le mot de passe pour accéder à la LAN Party est le nom de chaque ordinateur de la LAN Party, trié par ordre alphabétique, puis joint par des virgules. (Les personnes qui dirigent la LAN Party sont clairement une bande de nerds.) Dans cet exemple, le mot de passe serait co,de,ka,ta.
+
+Quel est le mot de passe pour accéder à la LAN Party ?
