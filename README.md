@@ -33,7 +33,7 @@ Ceci représente mes réponses aux défis, elles ne sont par définition pas les
 - <a href="/jour_22/">>> Jour 22</a>.
 - <a href="/jour_23/">>> Jour 23</a>.
 - <a href="/jour_24/">>> Jour 24</a>.
-- Jour 25  :  A venir.
+- <a href="/jour_25/">>> Jour 25</a>.
 
 ---
 ### Bonne fêtes de fin d'année à tous.
